@@ -5,6 +5,7 @@ import 'completed_tasks_screen.dart';
 import 'favorite_tasks_screen.dart';
 import 'my_drawer.dart';
 import 'pending_tasks_screen.dart';
+import 'search_screen.dart'; // Import your search screen widget
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -25,17 +26,27 @@ class _TabsScreenState extends State<TabsScreen> {
 
   void _addTask(BuildContext context) {
     showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: ((context) {
-          return SingleChildScrollView(
-            child: Container(
-              padding: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).viewInsets.bottom),
-              child: const AddTaskScreen(),
-            ),
-          );
-        }));
+      context: context,
+      isScrollControlled: true,
+      builder: ((context) {
+        return SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: const AddTaskScreen(),
+          ),
+        );
+      }),
+    );
+  }
+
+  void _searchTasks(BuildContext context) {
+    // Example: Navigate to a search screen
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const SearchScreen(),
+      ),
+    );
   }
 
   @override
@@ -46,9 +57,9 @@ class _TabsScreenState extends State<TabsScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              _addTask(context);
+               _searchTasks(context);
             },
-            icon: const Icon(Icons.add),
+            icon:  const Icon( Icons.search),
           )
         ],
       ),
