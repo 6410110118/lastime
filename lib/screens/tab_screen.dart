@@ -86,8 +86,7 @@ class _TabsScreenState extends State<TabsScreen> {
               label: 'Pending Tasks'),
           BottomNavigationBarItem(
               icon: Icon(Icons.done), label: 'Completed Tasks'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), label: 'Favorite Tasks'),
+          
         ],
       ),
     );
