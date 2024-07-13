@@ -51,6 +51,13 @@ class DeleteTask extends TasksEvent {
   @override
   List<Object> get props => [task];
 }
+class DeadlineEvent extends Equatable {
+  const DeadlineEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
 
 class MarkFavoriteOrUnFavoriteTask extends TasksEvent {
   final Task task;
@@ -90,3 +97,5 @@ class RestoreTask extends TasksEvent {
 }
 
 class DeleteAllTasks extends TasksEvent {}
+
+class LoadDeadlines extends TasksEvent {}

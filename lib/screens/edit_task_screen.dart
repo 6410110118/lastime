@@ -17,6 +17,9 @@ class EditTaskScreen extends StatelessWidget {
         TextEditingController(text: oldTask.title);
     TextEditingController descriptionController =
         TextEditingController(text: oldTask.description);
+    TextEditingController deadlineController =
+        TextEditingController(text: oldTask.deadline); // Initialize with oldTask deadline
+
     return Container(
       padding: const EdgeInsets.all(20.0),
       child: Column(
@@ -45,6 +48,25 @@ class EditTaskScreen extends StatelessWidget {
             decoration: const InputDecoration(
                 label: Text("Description"), border: OutlineInputBorder()),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
+            child: TextField(
+              controller: deadlineController,
+              decoration: const InputDecoration(
+                  label: Text("Deadline"), border: OutlineInputBorder()),
+              onTap: () async {
+                DateTime? pickedDate = await showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(2000),
+                  lastDate: DateTime(2101),
+                );
+                
+                deadlineController.text = pickedDate.toString();
+                
+              },
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -56,10 +78,12 @@ class EditTaskScreen extends StatelessWidget {
               ElevatedButton(
                   onPressed: () {
                     var editedTask = Task(
-                        id: oldTask.id,
-                        title: titleController.text,
-                        description: descriptionController.text,
-                        date: DateTime.now().toString());
+                      id: oldTask.id,
+                      title: titleController.text,
+                      description: descriptionController.text,
+                      date: DateTime.now().toString(),
+                      deadline: deadlineController.text, // Add deadline value
+                    );
                     context
                         .read<TasksBloc>()
                         .add(EditTask(newTask: editedTask, oldTask: oldTask));

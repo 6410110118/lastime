@@ -5,7 +5,8 @@ import 'completed_tasks_screen.dart';
 import 'favorite_tasks_screen.dart';
 import 'my_drawer.dart';
 import 'pending_tasks_screen.dart';
-import 'search_screen.dart'; // Import your search screen widget
+import 'search_screen.dart';
+import 'deadline_tasks_screen.dart'; // Import the new screen
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class _TabsScreenState extends State<TabsScreen> {
     {'pageName': const PendingTasksScreen(), "title": "Pending Tasks"},
     {'pageName': const CompletedTasksScreen(), "title": "Completed Tasks"},
     {'pageName': const FavoriteTasksScreen(), "title": "Favorite Tasks"},
+    {'pageName': const DeadlineTasksScreen(), "title": "Deadline Tasks"}, // Add new screen details
   ];
 
   var _selectedPageIndex = 0;
@@ -41,7 +43,6 @@ class _TabsScreenState extends State<TabsScreen> {
   }
 
   void _searchTasks(BuildContext context) {
-    // Example: Navigate to a search screen
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const SearchScreen(),
@@ -86,7 +87,9 @@ class _TabsScreenState extends State<TabsScreen> {
               label: 'Pending Tasks'),
           BottomNavigationBarItem(
               icon: Icon(Icons.done), label: 'Completed Tasks'),
-          
+         
+          BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today), label: 'Deadline Tasks'), // Add new item
         ],
       ),
     );

@@ -7,6 +7,7 @@ class Task extends Equatable {
   final String title;
   final String description;
   final String date;
+  final String deadline;
   bool? isDone;
   bool? isDeleted;
   bool? isFavorite;
@@ -16,6 +17,7 @@ class Task extends Equatable {
     required this.title,
     required this.description,
     required this.date,
+    required this.deadline,
     this.isDone,
     this.isDeleted,
     this.isFavorite,
@@ -31,6 +33,7 @@ class Task extends Equatable {
         title,
         date,
         description,
+        deadline,
         isDeleted,
         isDone,
         isFavorite,
@@ -42,6 +45,7 @@ class Task extends Equatable {
       'title': title,
       'description': description,
       'date': date,
+      'deadline':deadline,
       'isDone': isDone,
       'isDeleted': isDeleted,
       'isFavorite': isFavorite,
@@ -53,6 +57,7 @@ class Task extends Equatable {
     String? title,
     String? description,
     String? date,
+    String? deadline,
     bool? isDone,
     bool? isDeleted,
     bool? isFavorite,
@@ -62,6 +67,7 @@ class Task extends Equatable {
       title: title ?? this.title,
       description: description ?? this.description,
       date: date ?? this.date,
+      deadline: deadline ?? this.deadline,
       isDone: isDone ?? this.isDone,
       isDeleted: isDeleted ?? this.isDeleted,
       isFavorite: isFavorite ?? this.isFavorite,
@@ -74,6 +80,7 @@ class Task extends Equatable {
       title: map['title'] as String,
       description: map['description'] as String,
       date: map['date'] as String,
+      deadline: map['deadline'] as String,
       isDone: map['isDone'] != null ? map['isDone'] as bool : null,
       isDeleted: map['isDeleted'] != null ? map['isDeleted'] as bool : null,
       isFavorite: map['isFavorite'] != null ? map['isFavorite'] as bool : null,

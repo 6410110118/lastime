@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:todo/screens/pending_tasks_screen.dart';
+
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
-  List<String> _searchResults = []; // Example list of search results
+  final List<String> _searchResults = []; // Example list of search results
 
   void _performSearch(String query) {
     // Example: Perform search operation
@@ -18,11 +20,7 @@ class _SearchScreenState extends State<SearchScreen> {
       _searchResults.clear(); // Clear previous results
       if (query.isNotEmpty) {
         // Example: Search logic (replace with your actual search logic)
-        _searchResults = [
-          'Result 1 for $query',
-          'Result 2 for $query',
-          'Result 3 for $query',
-        ];
+        const PendingTasksScreen();
       }
     });
   }
